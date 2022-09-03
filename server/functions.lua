@@ -414,3 +414,12 @@ end
 function QBCore.Functions.Notify(source, text, type, length)
     TriggerClientEvent('QBCore:Notify', source, text, type, length)
 end
+
+-- Removes all decimals passed two places
+function QBCore.Functions.Round(money)
+    for k, v in pairs(money) do
+        if type(v) == "number" then
+            money[k] = tonumber(string.format("%.2f", v))
+        end
+    end
+end

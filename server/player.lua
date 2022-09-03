@@ -482,7 +482,7 @@ function QBCore.Player.Save(source)
             cid = tonumber(PlayerData.cid),
             license = PlayerData.license,
             name = PlayerData.name,
-            money = json.encode(Round(PlayerData.money)),
+            money = json.encode(QBCore.Functions.Round(PlayerData.money)),
             charinfo = json.encode(PlayerData.charinfo),
             job = json.encode(PlayerData.job),
             gang = json.encode(PlayerData.gang),
@@ -503,7 +503,7 @@ function QBCore.Player.SaveOffline(PlayerData)
             cid = tonumber(PlayerData.cid),
             license = PlayerData.license,
             name = PlayerData.name,
-            money = json.encode(Round(PlayerData.money)),
+            money = json.encode(QBCore.Functions.Round(PlayerData.money)),
             charinfo = json.encode(PlayerData.charinfo),
             job = json.encode(PlayerData.job),
             gang = json.encode(PlayerData.gang),
@@ -692,15 +692,6 @@ function QBCore.Player.CreateSerialNumber()
         end
     end
     return SerialNumber
-end
-
--- Removes all decimals passed two places
-function QBCore.Functions.Round(money)
-    for k, v in pairs(money) do
-        if type(v) == "number" then
-            money[k] = tonumber(string.format("%.2f", v))
-        end
-    end
 end
 
 PaycheckInterval() -- This starts the paycheck system
